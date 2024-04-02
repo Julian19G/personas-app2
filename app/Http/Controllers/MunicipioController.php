@@ -30,10 +30,10 @@ class MunicipioController extends Controller
      */
     public function create()
     {
-        $municipios = DB::table('tb_departamento')
+        $departamentos = DB::table('tb_departamento')
         ->orderby('depa_nomb')
         ->get();
-        return view('municipio.new',['municipios' => $municipios]);
+        return view('municipio.new',['departamentos' => $departamentos]);
     }
 
     /**
@@ -84,7 +84,7 @@ class MunicipioController extends Controller
         $departamentos = DB::table('tb_departamento')
             ->orderBy('depa_nomb')
             ->get();
-        return view('muncipio.edit',['municipio' => $municipio,'departamentos' => $departamentos]);
+        return view('municipio.edit',['municipio' => $municipio,'departamentos' => $departamentos]);
     }
 
     /**

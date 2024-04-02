@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Departamento;
+use App\Models\Pais;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,11 +17,9 @@ class DepartamentoController extends Controller
     public function index()
     {
              // $departamentos = Comuna::all();
-             $departamentos = DB::table('tb_departamento')
-             ->join('tb_pais','tb_departamento.pais_codi','=','tb_pais.pais_codi')
-             ->select('tb_departamento.*',"tb_pais.pais_codi")
-             ->get();
-         return view('departamento.index',['departamentos' => $departamentos]);
+             $departamentos = Departamento::with('pais')->get();
+
+             return view('departamento.index', ['departamentos' => $departamentos]);
     }
 
     /**
@@ -30,10 +29,10 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        $departamentos = DB::table('tb_pais')
+        $paises = DB::table('tb_pais')
         ->orderby('pais_nomb')
         ->get();
-        return view('departamento.new',['departamentos' => $departamentos]);
+        return view('departamento.new',['paises' => $paises]);
     }
 
     /**
@@ -48,7 +47,7 @@ class DepartamentoController extends Controller
 
         $departamento->depa_nomb = $request->name;          
         $departamento->pais_codi = $request->code;
-       // $comuna->save();
+        $departamento->save();
  
         $departamentos = DB::table('tb_departamento')
          ->join('tb_pais','tb_departamento.pais_codi','=','tb_pais.pais_codi')
@@ -128,4 +127,7 @@ class DepartamentoController extends Controller
 
         return view('departamento.index',['departamentos' => $departamentos]);
     }
+
+    
 }
+
