@@ -12,6 +12,7 @@
   </head>
 
   <body>
+  @include('navbar')
     <div class="container">
     <h1>Edit Municipio</h1>
     <form method="POST" action="{{ route('municipios.update', ['municipio' => $municipio->muni_codi]) }}">

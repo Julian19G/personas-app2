@@ -12,6 +12,7 @@
   </head>
 
   <body>
+  @include('navbar')
     <div class="container">
     <h1>Add Comuna</h1>
     <form method="POST" action="{{ route('comunas.store') }}">

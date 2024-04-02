@@ -14,7 +14,7 @@
 
 </head>
 <body>
-
+@include('navbar')
     <div class="container">
         <h1>Listado de Departamentos</h1>
         <a href="{{ route('departamentos.create') }}" class="btn btn-success">Add</a>
