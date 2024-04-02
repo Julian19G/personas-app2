@@ -11,4 +11,10 @@ class Departamento extends Model
     protected $table = "tb_departamento";
     protected $primaryKey = "depa_codi";
     public $timestamps = false;
+    public function pais()
+    {
+        return $this->belongsTo(Pais::class, 'pais_codi');
+    }
 }
+
+
