@@ -14,6 +14,7 @@
   </head>
 
   <body>
+  @include('navbar')
     <div class="container">
     <h1>Listado de Paises</h1>
     <a href="{{ route('paises.create') }}" class="btn btn-success">Agregar</a>
@@ -22,19 +23,22 @@
             <tr>
                 <th scope="col">Code</th>
                 <th scope="col">Pais</th>
+                <th scope="col">Capital</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
          @foreach ($paises as $pais)
          <tr>
-      <th scope="row">{{ $pais->comu_codi }}</th>
-      <td>{{ $pais->comu_nomb }}</td>
+      <th scope="row">{{ $pais->pais_codi }}</th>
+      <td>{{ $pais->pais_nomb }}</td>
+      <td>{{ $pais->pais_capi }}</td>
       <td>
-        <a href="{{route('paises.edit',['pais'=>$pais->comu_codi]) }}"
+        <a href="{{route('paises.edit',['pais'=>$pais->pais_codi]) }}"
+
         class="btn btn-info"> Edit </a></li>
         
-        <form action="{{ route('paises.destroy',['pais' => $pais->comu_codi]) }}"     
+        <form action="{{ route('paises.destroy',['pais' => $pais->pais_codi]) }}"     
         method="POST" style="display: inline-block">
         @method('delete')
         @csrf 
