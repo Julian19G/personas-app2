@@ -40,12 +40,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="capital">Capital:</label>
+                    <label class="control-label col-sm-2" for="muncipio">Capital:</label>
                     <div class="col-sm-10">
-                        <select class="form-select" id="capital" name="code" required>
+                        <select class="form-select" id="municipio" name="code" required>
                             <option selected disabled value="">Seleccione una...</option>
-                            @foreach ($capitales as $capital)
-                                <option value="{{ $capital->pais_capi }}">{{ $capital->pais_capi }}</option>
+                            @foreach ($municipios as $municipio)
+                                <option value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
                             @endforeach
                         </select>
                     </div>

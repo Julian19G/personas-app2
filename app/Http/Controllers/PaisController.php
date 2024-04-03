@@ -15,7 +15,10 @@ class PaisController extends Controller
      */
     public function index()
     {
-        $paises = Pais::all();
+        $paises = DB::table('tb_pais')
+        ->join('tb_municipio','tb_pais.pais_capi','=','tb_municipio.muni_codi')
+        ->select('tb_pais.*','tb_municipio.muni_nomb')
+        ->get();
         return view('pais.index', ['paises' => $paises]);
     }
 
@@ -26,11 +29,11 @@ class PaisController extends Controller
      */
     public function create()
     {
-        $capitales = DB::table('tb_pais')
-        ->orderBy('pais_capi')
+        $municipios = DB::table('tb_municipio   ')
+        ->orderBy('muni_nomb')
         ->get();
 
-        return view('pais.new', ['capitales' => $capitales]);
+        return view('pais.new', ['municipios' => $municipios]);
     }
 
     /**
